@@ -20,3 +20,10 @@ As a user
 So I can list my specific links based on keywords
 I want to be able to filter by their tags
 ```
+
+|OBJECTS | MESSAGES |
+|---------------|-----------------|
+|Bookmark Manager|show_links|
+|Bookmark Manager|add_links (title, URL)|
+|Bookmark Manager|filter_links (based on tag)|
+|Links|add_tag|
