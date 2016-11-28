@@ -1,3 +1,5 @@
+# Bookmark Manager project
+
 ## User stories
 
 ```
@@ -20,6 +22,7 @@ As a user
 So I can list my specific links based on keywords
 I want to be able to filter by their tags
 ```
+## Rough Domain Model
 
 |OBJECTS | MESSAGES |
 |---------------|-----------------|
