@@ -1,5 +1,5 @@
 
-require 'link'
+require './app/models/link.rb'
 require 'spec_helper'
 
 RSpec.feature "BookmarkManager" do

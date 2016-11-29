@@ -1,4 +1,4 @@
-require 'link'
+require './app/models/link.rb'
 
 describe Link do
 
