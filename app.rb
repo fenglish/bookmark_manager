@@ -12,6 +12,8 @@ class BookmarkManager < Sinatra::Base
 
   get '/links' do
     @links = Link.all
+        @tags = Tag.all
+    @link_tag = LinkTag.all
     erb :"links/index"
   end
 
