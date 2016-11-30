@@ -1,6 +1,6 @@
-
-require './app/models/link.rb'
 require 'spec_helper'
+require './app/models/link.rb'
+
 
 RSpec.feature "BookmarkManager" do
   scenario "Users see a list of links from database" do
