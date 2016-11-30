@@ -5,6 +5,7 @@ gem "data_mapper"
 gem "dm-postgres-adapter"
 gem "sinatra"
 gem "pg"
+gem "rack"
 
 group :test, :development do
   gem "rspec"
