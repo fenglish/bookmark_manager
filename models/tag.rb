@@ -1,6 +1,5 @@
 require 'data_mapper'
 require 'dm-postgres-adapter'
-require_relative 'database_setting.rb'
 
 class Tag
   include DataMapper::Resource
