@@ -7,7 +7,6 @@ require_relative './models/database_setting.rb'
 class BookmarkManager < Sinatra::Base
   get '/' do
     'Hello BookmarkManager!'
-    redirect '/links/new'
   end
 
   get '/links' do
@@ -29,24 +28,8 @@ class BookmarkManager < Sinatra::Base
   end
 
   get '/tags/:name' do
-    @links = Link.all
-    @tags = Tag.all
-    @link_tag = LinkTag.all
-    tag_ids = []
-    link_ids = []
-    tag_ids = @tags.map{ |tag| tag.id if tag.tag_name == params[:name] }
-    tag_ids.map do | tag_id |
-       @link_tag.each do | link_tag |
-          link_ids << link_tag.link_id if link_tag.tag_id == tag_id
-        end
-     end
-     @links_by_tag = []
-     link_ids.each do |link_id|
-       @links_by_tag << @links.all(id: link_id)
-     end
-    # tag_ids.map do |tag_id|
-    #   @link_tag.url_id if tag_id == @link_tag.tag_id
-    # end
+    @tag = Tag.all(tag_name: params[:name])
+    @links = @tag.links
     erb :"links/index"
   end
 

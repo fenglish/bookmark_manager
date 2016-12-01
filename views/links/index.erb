@@ -14,30 +14,5 @@
   </li>
   <% end %>
 </ul>
-<ul id='links'>
-  <% @links_by_tag .each do |link_by_tag| %>
-  <li>
-    Title: <%= link_by_tag.title %>
-    URL: <%= link_by_tag.url %>
-  </li>
-  <% end %>
-</ul>
-<!-- <ul id='link_tag'>
-  <% @link_tag.each do |link_tag| %>
-  <li>
-    <% @links.each do |link|%>
-      <%if link_tag.link_id == link.id %>
-      Title: <%=link.title %>
-      URL: <%=link.url %>
-      <%end%>
-    <% end %>
-    <% @tags.each do |tag|%>
-      <%if link_tag.tag_id == tag.id %>
-      Tag: <%=tag.tag_name %>
-    <%end%>
-    <% end %>
-  </li>
-  <% end %>
-</ul> -->
 </body>
 </html>
