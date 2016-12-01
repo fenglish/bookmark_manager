@@ -4,6 +4,7 @@ require 'database_cleaner'
 
 RSpec.feature "BookmarkManager" do
   scenario "Users filter links by tag" do
+    DatabaseCleaner.strategy = :truncation
     visit '/links/new'
     fill_in('url', with: 'https://something')
     fill_in('title', with: 'Something')
@@ -15,7 +16,8 @@ RSpec.feature "BookmarkManager" do
     fill_in('tag', with: 'test')
     click_button('Submit')
     visit "/tags/bubbles"
-    expect(page).to have_content('bubbles')
-    expect(page).not_to have_content('test') 
+    expect(page).to have_content('Something')
+    expect(page).not_to have_content('Another')
   end
+  DatabaseCleaner.clean
 end
