@@ -1,8 +1,10 @@
 require 'spec_helper'
 require './models/link.rb'
+require 'web_helper'
 
 RSpec.feature "BookmarkManager" do
   scenario "Users filter links by tag" do
+    sign_in
     visit '/links/new'
     fill_in('url', with: 'https://something')
     fill_in('title', with: 'Something')

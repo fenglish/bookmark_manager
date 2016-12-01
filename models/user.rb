@@ -1,11 +1,9 @@
 require 'data_mapper'
 require 'dm-postgres-adapter'
 
-class Link
+class User
   include DataMapper::Resource
   property :id, Serial
-  property :url, Text
-  property :title, String
-
-  has n, :tags, :through => Resource
+  property :email, String
+  property :password, String
 end
