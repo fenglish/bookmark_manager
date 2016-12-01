@@ -12,7 +12,7 @@ class BookmarkManager < Sinatra::Base
 
   get '/links' do
     @links = Link.all
-        @tags = Tag.all
+    @tags = Tag.all
     @link_tag = LinkTag.all
     erb :"links/index"
   end
@@ -26,6 +26,18 @@ class BookmarkManager < Sinatra::Base
     tag = Tag.create(tag_name: params[:tag])
     LinkTag.create( :link => link, :tag => tag )
     redirect '/links'
+  end
+
+  get '/tags/:name' do
+    @links = Link.all
+    @tags = Tag.all
+    @link_tag = LinkTag.all
+    tag_ids = []
+    @links = @tags.map{ |tag| tag.tag_id if tag.tag_name == params[:name] }
+    # tag_ids.map do |tag_id|
+    #   @link_tag.url_id if tag_id == @link_tag.tag_id
+    # end
+    erb :"links/index"
   end
 
   # start the server if ruby file executed directly
