@@ -33,7 +33,7 @@ class BookmarkManager < Sinatra::Base
     @tags = Tag.all
     @link_tag = LinkTag.all
     tag_ids = []
-    @links = @tags.map{ |tag| tag.tag_id if tag.tag_name == params[:name] }
+    @links = @tags.map{ |tag| tag.id if tag.tag_name == params[:name] }
     # tag_ids.map do |tag_id|
     #   @link_tag.url_id if tag_id == @link_tag.tag_id
     # end
