@@ -4,6 +4,7 @@ require './models/link.rb'
 require './models/tag.rb'
 require './models/user.rb'
 require_relative './models/database_setting.rb'
+require './models/encryption.rb'
 
 class BookmarkManager < Sinatra::Base
 
@@ -19,9 +20,9 @@ class BookmarkManager < Sinatra::Base
     erb :index
   end
 
-  post '/sign-in-successful' do
-    User.create(email: params[:email], password: params[:password])
-    session[:id] = User.last.id
+  post '/sign-up' do
+    user = User.create(email: params[:email], password: params[:password])
+    session[:id] = user.id
     redirect '/links'
   end
 
