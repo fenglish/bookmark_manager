@@ -7,8 +7,12 @@ require_relative './models/database_setting.rb'
 
 class BookmarkManager < Sinatra::Base
 
-  before do
-    @user = User.last
+  enable :sessions
+
+  helpers do
+    def current_user
+      User.first(id: session[:id])
+    end
   end
 
   get '/' do
@@ -17,10 +21,12 @@ class BookmarkManager < Sinatra::Base
 
   post '/sign-in-successful' do
     User.create(email: params[:email], password: params[:password])
+    session[:id] = User.last.id
     redirect '/links'
   end
 
   get '/links' do
+    @user = current_user
     @links = Link.all
     erb :"links/index"
   end
@@ -30,6 +36,7 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/links' do
+    @user = current_user
     link = Link.create(url: params[:url], title: params[:title])
     @tags = params[:tag].split(" ")
     @tags.each do |tag|
@@ -40,6 +47,7 @@ class BookmarkManager < Sinatra::Base
   end
 
   get '/tags/:name' do
+    @user = current_user
     @tag = Tag.all(tag_name: params[:name])
     @links = @tag.links
     erb :"links/index"
